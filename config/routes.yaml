@@ -1,3 +1,12 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+weather_in_city:
+    path: /weather/{city}
+    controller: App\Controller\WeatherController:cityAction
+    defaults:
+        city: 1
+    requirements:
+        ciy: \d+
+weather_by_name:
+    path: /weather-name/{Name}
+    controller: App\Controller\WeatherController:cityActionByName
+ 
+
