@@ -6,7 +6,7 @@ weather_in_city:
     requirements:
         ciy: \d+
 weather_by_name:
-    path: /weather-name/{Name}
+    path: /weather-name/{name}
     controller: App\Controller\WeatherController:cityActionByName
  
 

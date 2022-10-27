@@ -42,9 +42,9 @@ class ForecastRepository extends ServiceEntityRepository
     public function findByLocation(Location $location)
     {
         $qb = $this->createQueryBuilder('f');
-        $qb->where('f.Location = :location')
+        $qb->where('f.location = :location')
             ->setParameter('location', $location)
-            ->andWhere('f.Date > :now')
+            ->andWhere('f.date > :now')
             ->setParameter('now', date('Y-m-d'));
             #->join('f.Location', 'l')
             #->andWhere('l.Name = :name')
@@ -55,12 +55,12 @@ class ForecastRepository extends ServiceEntityRepository
         return $result;
     }
 
-    public function findByLocationByName($Name)
+    public function findByLocationByName($name)
     {
         $qb = $this->createQueryBuilder('f');
-        $qb->where('l.Name = :name')
-            ->setParameter('name',$Name)
-            ->join('f.Location', 'l');
+        $qb->where('l.name = :name')
+            ->setParameter('name',$name)
+            ->join('f.location', 'l');
             
         $query = $qb->getQuery();
         $result = $query->getResult();

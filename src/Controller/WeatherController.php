@@ -19,10 +19,11 @@ class WeatherController extends AbstractController
             'measurements' => $measurements,
          ]);
         }
-    public function cityActionByName($Name, ForecastRepository $measurementRepository, LocationRepository $locationRepository): Response
+    public function cityActionByName($name, ForecastRepository $measurementRepository, LocationRepository $locationRepository): Response
     {
-        $location = $locationRepository -> findOneBy(['Name' => $Name]);
-        $measurements = $measurementRepository->findByLocationByName($Name);
+        #$location = $locationRepository -> findOneByName(['Name' => $Name]);
+        $location = $locationRepository -> findOneByName($name); #zmień nazwy właściwośi na małe litery
+        $measurements = $measurementRepository->findByLocationByName($name);
         return $this->render('weather/city.html.twig', [
             'location' => $location,
         'measurements' => $measurements,

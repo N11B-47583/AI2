@@ -15,17 +15,17 @@ class Forecast
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 3, scale: '0')]
-    private ?string $Temperature = null;
+    private ?string $temperature = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $Date = null;
+    private ?\DateTimeInterface $date = null;
 
     #[ORM\Column]
-    private ?int $Pressure = null;
+    private ?int $pressure = null;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Location $Location = null;
+    private ?Location $location = null;
 
     public function getId(): ?int
     {
@@ -34,36 +34,36 @@ class Forecast
 
     public function getTemperature(): ?string
     {
-        return $this->Temperature;
+        return $this->temperature;
     }
 
-    public function setTemperature(string $Temperature): self
+    public function setTemperature(string $temperature): self
     {
-        $this->Temperature = $Temperature;
+        $this->temperature = $temperature;
 
         return $this;
     }
 
     public function getDate(): ?\DateTimeInterface
     {
-        return $this->Date;
+        return $this->date;
     }
 
-    public function setDate(\DateTimeInterface $Date): self
+    public function setDate(\DateTimeInterface $date): self
     {
-        $this->Date = $Date;
+        $this->date = $date;
 
         return $this;
     }
 
     public function getPressure(): ?int
     {
-        return $this->Pressure;
+        return $this->pressure;
     }
 
-    public function setPressure(int $Pressure): self
+    public function setPressure(int $pressure): self
     {
-        $this->Pressure = $Pressure;
+        $this->pressure = $pressure;
 
         return $this;
     }
@@ -73,9 +73,9 @@ class Forecast
         return $this->Location;
     }
 
-    public function setLocation(?Location $Location): self
+    public function setLocation(?Location $location): self
     {
-        $this->Location = $Location;
+        $this->Location = $location;
 
         return $this;
     }
