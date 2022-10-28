@@ -74,8 +74,12 @@ class Location
 
     public function setCountry(string $country): self
     {
-        $this->Country = $country;
+        $this->country = $country;
 
         return $this;
+    }
+    public function __toString()
+    {
+        return strval($this->id);
     }
 }

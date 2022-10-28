@@ -70,12 +70,12 @@ class Forecast
 
     public function getLocation(): ?Location
     {
-        return $this->Location;
+        return $this->location;
     }
 
     public function setLocation(?Location $location): self
     {
-        $this->Location = $location;
+        $this->location = $location;
 
         return $this;
     }

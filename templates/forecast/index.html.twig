@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Forecast index{% endblock %}
+
+{% block body %}
+    <h1>Forecast index</h1>
+
+    <p><a href="{{ path('app_location_index') }}">Go to Location</a></p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Temperature</th>
+                <th>Date</th>
+                <th>Pressure</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for forecast in forecasts %}
+            <tr>
+                <td>{{ forecast.id }}</td>
+                <td>{{ forecast.temperature }}</td>
+                <td>{{ forecast.date ? forecast.date|date('Y-m-d') : '' }}</td>
+                <td>{{ forecast.pressure }}</td>
+                <td>
+                    <a href="{{ path('app_forecast_show', {'id': forecast.id}) }}">show</a>
+                    <a href="{{ path('app_forecast_edit', {'id': forecast.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_forecast_new') }}">Create new</a>
+{% endblock %}
