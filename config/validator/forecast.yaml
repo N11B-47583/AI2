@@ -1,0 +1,7 @@
+App\Entity\Forecast:
+  properties:
+    temperature:
+      - Range:
+          min: -99
+          max: 99
+          groups: ['new', 'edit']

@@ -25,7 +25,10 @@ class ForecastController extends AbstractController
     public function new(Request $request, ForecastRepository $forecastRepository): Response
     {
         $forecast = new Forecast();
-        $form = $this->createForm(ForecastType::class, $forecast);
+        #$form = $this->createForm(ForecastType::class, $forecast);
+        $form = $this->createForm(ForecastType::class, $forecast, [
+            'validation_groups' => ['new', 'edit']
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -51,7 +54,10 @@ class ForecastController extends AbstractController
     #[Route('/{id}/edit', name: 'app_forecast_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Forecast $forecast, ForecastRepository $forecastRepository): Response
     {
-        $form = $this->createForm(ForecastType::class, $forecast);
+        #$form = $this->createForm(ForecastType::class, $forecast);
+        $form = $this->createForm(ForecastType::class, $forecast, [
+            'validation_groups' => ['new', 'edit']
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
