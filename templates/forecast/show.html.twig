@@ -28,7 +28,12 @@
 
     <a href="{{ path('app_forecast_index') }}">back to list</a>
 
-    <a href="{{ path('app_forecast_edit', {'id': forecast.id}) }}">edit</a>
+    {% if is_granted('ROLE_MEASUREMENT_UPDATE') %}
+        <a href="{{ path('app_forecast_edit', {'id': forecast.id}) }}">edit</a>
+    {% endif %}
 
-    {{ include('forecast/_delete_form.html.twig') }}
+    {% if is_granted('ROLE_MEASUREMENT_DELETE') %}
+        {{ include('forecast/_delete_form.html.twig') }}
+    {% endif %}
+    
 {% endblock %}

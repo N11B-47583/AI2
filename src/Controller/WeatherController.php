@@ -8,6 +8,8 @@ use App\Entity\Location;
 use App\Entity\Forecast;
 use App\Repository\ForecastRepository;
 use App\Repository\LocationRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+
 
 class WeatherController extends AbstractController
 {
@@ -22,7 +24,7 @@ class WeatherController extends AbstractController
     public function cityActionByName($name, ForecastRepository $measurementRepository, LocationRepository $locationRepository): Response
     {
         #$location = $locationRepository -> findOneByName(['Name' => $Name]);
-        $location = $locationRepository -> findOneByName($name); #zmień nazwy właściwośi na małe litery
+        $location = $locationRepository -> findOneByName($name);
         $measurements = $measurementRepository->findByLocationByName($name);
         return $this->render('weather/city.html.twig', [
             'location' => $location,

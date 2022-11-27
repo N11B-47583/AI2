@@ -8,5 +8,8 @@ weather_in_city:
 weather_by_name:
     path: /weather-name/{name}
     controller: App\Controller\WeatherController:cityActionByName
+app_logout:
+    path: /logout
+    methods: GET
  
 

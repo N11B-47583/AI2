@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 #[Route('/forecast')]
 class ForecastController extends AbstractController
@@ -20,7 +21,7 @@ class ForecastController extends AbstractController
             'forecasts' => $forecastRepository->findAll(),
         ]);
     }
-
+    ##[IsGranted('ROLE_MEASUREMENT_CREATE')]
     #[Route('/new', name: 'app_forecast_new', methods: ['GET', 'POST'])]
     public function new(Request $request, ForecastRepository $forecastRepository): Response
     {
@@ -42,7 +43,7 @@ class ForecastController extends AbstractController
             'form' => $form,
         ]);
     }
-
+    ##[IsGranted('ROLE_MEASUREMENT_SHOW')]
     #[Route('/{id}', name: 'app_forecast_show', methods: ['GET'])]
     public function show(Forecast $forecast): Response
     {
@@ -50,7 +51,7 @@ class ForecastController extends AbstractController
             'forecast' => $forecast,
         ]);
     }
-
+    ##[IsGranted('ROLE_MEASUREMENT_UPDATE')]
     #[Route('/{id}/edit', name: 'app_forecast_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Forecast $forecast, ForecastRepository $forecastRepository): Response
     {
@@ -71,7 +72,7 @@ class ForecastController extends AbstractController
             'form' => $form,
         ]);
     }
-
+    ##[IsGranted('ROLE_MEASUREMENT_DELETE')]
     #[Route('/{id}', name: 'app_forecast_delete', methods: ['POST'])]
     public function delete(Request $request, Forecast $forecast, ForecastRepository $forecastRepository): Response
     {
